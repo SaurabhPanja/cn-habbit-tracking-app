@@ -1,24 +1,47 @@
-import logo from './logo.svg';
+import { createStore } from 'redux'
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
 import './App.css';
+
+import Habbits from './Habbits';
+import Routine from './Routine';
+
+function todos(state = [], action) {
+  switch (action.type) {
+    case 'ADD_HABBIT':
+      return state.concat([action.text])
+    default:
+      return state
+  }
+}
+
+const store = createStore(todos, ['Use Redux'])
+
+store.dispatch({
+  type: 'ADD_TODO',
+  text: 'Read the docs'
+})
+
+console.log(store.getState())
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Habbits />
+  },
+  {
+    path: "/routine",
+    element: <Routine />
+  }
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <RouterProvider router={router} store={store}/>
   );
 }
 
