@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ReactReduxContext } from 'react-redux'
 
 export default function Habbits() {
+  const { store } = useContext(ReactReduxContext)
+
+  console.log(store.getState())
   return (
     <div>
         <div>
