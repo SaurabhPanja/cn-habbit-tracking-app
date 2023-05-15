@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { ReactReduxContext, connect } from 'react-redux'
+import { ReactReduxContext } from 'react-redux'
+import { Link } from "react-router-dom";
+
 
 const Habbits = () =>{
   const { store } = useContext(ReactReduxContext)
@@ -19,7 +21,9 @@ const Habbits = () =>{
   return (
     <div>
       {habbits.map((habbit, index)=>(
-        <div key={index}>{habbit.text}</div>
+        <div key={index}>
+          <Link to={'/routine/'+habbit.id}>{habbit.text}</Link>
+        </div>
       ))}
         <input type='text' onChange={(e)=>setNewHabbit(e.target.value)} value={newHabbit}/>
         <button onClick={handleOnClick}>Add +</button>
@@ -27,5 +31,5 @@ const Habbits = () =>{
   )
 }
 
-export default connect()(Habbits);
+export default Habbits;
 

@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <Habbits />
   },
   {
-    path: "/routine",
+    path: "/routine/:id",
     element: <Routine />
   }
 ]);

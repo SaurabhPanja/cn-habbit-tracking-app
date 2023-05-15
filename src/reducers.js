@@ -1,6 +1,6 @@
 const initialState = {
   habbits: [
-    { id: 0, text: 'Swimming', status: {
+    { id: 1, text: 'Swimming', status: {
         "day_1": "none",
         "day_2": "none",
         "day_3": "none",
@@ -10,9 +10,9 @@ const initialState = {
         "day_7": "none"
       }
     },
-    { id: 1, text: 'Jogging', status: {
+    { id: 2, text: 'Jogging', status: {
         "day_1": "none",
-        "day_2": "none",
+        "day_2": "done",
         "day_3": "none",
         "day_4": "none",
         "day_5": "none",
@@ -20,7 +20,7 @@ const initialState = {
         "day_7": "none"
       }
     },
-    { id: 2, text: 'Gymn', status: {
+    { id: 3, text: 'Gymn', status: {
         "day_1": "none",
         "day_2": "none",
         "day_3": "none",
