@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { ReactReduxContext } from 'react-redux'
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 
 const Routine = () =>{
@@ -8,18 +8,32 @@ const Routine = () =>{
   const { store } = useContext(ReactReduxContext)
   const [appState, setAppState] = useState(store.getState())
 
-  console.log(appState)
+  // console.log(appState)
 
   const habbits = appState['habbits']
   const filterHabbit = habbits.filter(habbit=>habbit.id == id)
   const routine = filterHabbit.length > 0 ? filterHabbit[0] : null
-  
-  // const handleOnClick = (e)=> {
-  //   if(newHabbit.length > 0)
-  //     store.dispatch({ type: 'ADD_HABBIT', payload: newHabbit })
-  //     setAppState(store.getState())
-  //     setNewHabbit("")
-  // }
+    
+  const handleOnChange = (e)=> {
+    const dayAndStatus = e.target.value.split(" ")
+
+    const day = dayAndStatus[1]
+    const updateStatus= dayAndStatus[0]
+
+    // console.log(day)
+    // console.log(updateStatus)
+
+    store.dispatch({
+      type: "UPDATE_ROUTINE",
+      payload: {
+        updateHabbitId: routine.id,
+        day: day,
+        status: updateStatus
+      }
+    })
+
+    // console.log(store.getState())
+  }
 
   const routinDays = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"]
 
@@ -33,16 +47,17 @@ const Routine = () =>{
             let k = day.replace(" ", "_").toLowerCase()
             return (
               <div key={k}>{day} : 
-              <select defaultValue={routine.status[k]} onChange={(e)=>console.log(e.target.value)}>
-                <option value="done">Done</option>
-                <option value="none">None</option>
-                <option value="not_done">Not Done</option>
+              <select defaultValue={routine[k] + " " + k} onChange={handleOnChange}>
+                <option value={"done " + k}>Done</option>
+                <option value={"none " + k}>None</option>
+                <option value={"not_done " + k}>Not Done</option>
               </select>
               </div>
             )
           })
         }
         </div>}
+        <Link to="/">Home</Link>
     </div>
   )
 }
