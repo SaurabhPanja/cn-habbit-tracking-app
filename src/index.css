@@ -7,5 +7,18 @@
   }
 
 body{
+  background: #E55D87;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #5FC3E4, #E55D87); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     font-family: 'Rubik', sans-serif;
+}
+
+#root{
+  width: 400px;
+  background-color: whitesmoke;
+  border-radius: 1rem;
+  box-shadow: 5px 5px #888888;
+  padding: 1rem;
+  text-align: center;
 }

@@ -11,9 +11,9 @@ const store = configureStore({ reducer: rootReducer })
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <App className="container" />
     </Provider>
-  // </React.StrictMode>
+  </React.StrictMode>
 );

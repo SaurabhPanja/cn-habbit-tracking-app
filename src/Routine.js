@@ -46,8 +46,8 @@ const Routine = () =>{
           routinDays.map(day=>{
             let k = day.replace(" ", "_").toLowerCase()
             return (
-              <div key={k}>{day} : 
-              <select defaultValue={routine[k] + " " + k} onChange={handleOnChange}>
+              <div className='mb-2' key={k}>{day} : 
+              <select className='form-select' defaultValue={routine[k] + " " + k} onChange={handleOnChange}>
                 <option value={"done " + k}>Done</option>
                 <option value={"none " + k}>None</option>
                 <option value={"not_done " + k}>Not Done</option>

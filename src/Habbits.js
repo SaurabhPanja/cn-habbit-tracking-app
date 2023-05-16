@@ -20,13 +20,18 @@ const Habbits = () =>{
 
   return (
     <div>
+      <h1>Habbits</h1>
       {habbits.map((habbit, index)=>(
-        <div key={index}>
-          <Link to={'/routine/'+habbit.id}>{habbit.text}</Link>
-        </div>
+        <Link 
+        className='btn btn-info d-block mb-2' 
+        key={index} 
+        to={'/routine/'+habbit.id}
+        >
+          {habbit.text}
+        </Link>
       ))}
-        <input type='text' onChange={(e)=>setNewHabbit(e.target.value)} value={newHabbit}/>
-        <button onClick={handleOnClick}>Add +</button>
+        <input className='form-control mb-2' type='text' onChange={(e)=>setNewHabbit(e.target.value)} value={newHabbit}/>
+        <button className='btn btn-success' onClick={handleOnClick}>Add +</button>
     </div>
   )
 }
